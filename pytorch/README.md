@@ -6,25 +6,25 @@ This directory contains optimized PyTorch implementations for the TriMul kernel 
 
 | Implementation | Geometric Mean | Description |
 |----------------|---------------|-------------|
-| submission_improved_triton.py | **2.399 ms** | Three-way hybrid: Arseni + optimized routing |
+| submission_improved_triton.py ⚡ | **2.399 ms** | Three-way hybrid: Arseni + optimized routing |
 | submission_v2.py | 4.195 ms | Clean FP16 implementation |
 
-**Best Performance:** submission_improved_triton.py achieves 2.399ms (43% faster than v2)
+**Best Performance** ⚡: submission_improved_triton.py achieves 2.399ms (43% faster than v2)
 
 ## Implementation Details
 
 ---
 
-### submission_improved_triton.py
+### submission_improved_triton.py ⚡
 **Strategy:** Three-tier routing based on Arseni Ivanov's hybrid approach
 
 **Key Features:**
 - Small inputs (seqlen ≤ 256): Arseni's lightweight PyTorch path
-- Medium inputs (256 < seqlen ≤ 512): Optimized W @ x.t() memory layout (47% speedup)
+- Medium inputs (256 < seqlen ≤ 512): Optimized W @ x.t() memory layout ⚡ (47% faster)
 - Large inputs (seqlen > 512): Fused Triton kernels (LayerNorm + MatMul + Gating)
 - Empirical benchmark-driven routing strategy
 
-**Performance:** 2.399 ms geometric mean on H100
+**Performance:** 2.399 ms geometric mean on H100 ⚡
 - 11.5% faster than Arseni's original implementation
 - 43% faster than baseline v2
 
