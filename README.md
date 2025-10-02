@@ -12,7 +12,7 @@ The TriMul operator processes 4D tensors of shape `[B, N, N, C]` representing pa
 
 ### Benchmark Results (H100 GPU)
 
-![Implementation Comparison](implementation_comparison_h100.png)
+![Implementation Comparison](trimul_performance_comparison.png)
 
 | Implementation | Geometric Mean | Speedup vs Baseline | Tests Passed | Code Complexity |
 |----------------|----------------|---------------------|--------------|-----------------|
